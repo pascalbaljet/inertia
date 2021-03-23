@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import debounce from './debounce'
 import modal from './modal'
-import { fireBeforeEvent, fireErrorEvent, fireExceptionEvent, fireFinishEvent, fireInvalidEvent, fireNavigateEvent, fireProgressEvent, fireStartEvent, fireSuccessEvent } from './events' // prettier-ignore
+import { fireBeforeEvent, fireBeforeSetPageEvent, fireErrorEvent, fireExceptionEvent, fireFinishEvent, fireInvalidEvent, fireNavigateEvent, fireProgressEvent, fireStartEvent, fireSuccessEvent } from './events' // prettier-ignore
 import { hrefToUrl, mergeDataIntoQueryString, urlWithoutHash } from './url'
 import { hasFiles } from './files'
 import { objectToFormData } from './formData'
@@ -180,6 +180,7 @@ export default {
     forceFormData = false,
     onCancelToken = () => ({}),
     onBefore = () => ({}),
+    onBeforeSetPage = () => ({}),
     onStart = () => ({}),
     onProgress = () => ({}),
     onFinish = () => ({}),
@@ -253,7 +254,11 @@ export default {
           responseUrl.hash = url.hash
           response.data.url = responseUrl.href
         }
-        return this.setPage(response.data, { visitId, replace, preserveScroll, preserveState })
+        const options = { visitId, replace, preserveScroll, preserveState }
+        if (onBeforeSetPage(response, options) === false || !fireBeforeSetPageEvent(response, options)) {
+          return
+        }
+        return this.setPage(response.data, options)
       }).then(() => {
         const errors = this.resolveErrors(this.page)
         if (Object.keys(errors).length > 0) {
