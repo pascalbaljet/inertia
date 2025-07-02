@@ -1,34 +1,34 @@
 name: Bug Report
-description: "Submit an issue."
+description: "Submit an issue related to the Inertia Laravel adapter."
 body:
   - type: markdown
     attributes:
-      value: "Please read [our full contribution guide](https://laravel.com/docs/contributions#bug-reports) before submitting bug reports."
+      value: "Please read [our full contribution guide](https://laravel.com/docs/contributions#bug-reports) before submitting bug reports related to the Inertia Laravel adapter."
+  - type: input
+    attributes:
+      label: "PHP package version"
+      description: Provide the version of `inertiajs/inertia-laravel` you are using.
+      placeholder: 2.0.0
+    validations:
+      required: true
   - type: checkboxes
     attributes:
-      label: Inertia adapter(s) affected
-      description: Select all frontend adapters that are impacted by this issue.
+      label: Inertia adapter(s) affected (if any)
+      description: Select any frontend adapters involved in this issue, if relevant.
       options:
         - label: React
         - label: Vue 3
         - label: Svelte
         - label: Not Applicable
-  - type: input
-    attributes:
-      label: "JS package version"
-      description: Provide the version of `@inertiajs/{adapter}` you are using.
-      placeholder: 2.0.0
-    validations:
-      required: true
   - type: textarea
     attributes:
-      label: Backend stack (optional)
-      description: If this bug depends on backend integration, provide details such as Laravel version, PHP version, or other relevant environment info.
+      label: Backend stack
+      description: Provide details such as Laravel version, PHP version, and any relevant backend environment info.
       placeholder: |
         Laravel 12.x
         PHP 8.4
     validations:
-      required: false
+      required: true
   - type: textarea
     attributes:
       label: Describe the problem
