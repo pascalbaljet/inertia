@@ -36,5 +36,5 @@ body:
     attributes:
       label: Additional context (optional)
       description: Add any other details, device info, screenshots, or links that might help.
-      validations:
-        required: false
+    validations:
+      required: false
