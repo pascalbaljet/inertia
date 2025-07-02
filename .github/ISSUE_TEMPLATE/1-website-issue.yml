@@ -1,4 +1,4 @@
-name: Website Bug
+name: Website Issue
 description: Report a layout, navigation, or technical issue with inertiajs.com.
 labels: [website]
 body:
