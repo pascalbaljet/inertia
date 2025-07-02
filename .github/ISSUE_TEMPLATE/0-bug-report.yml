@@ -4,17 +4,29 @@ body:
   - type: markdown
     attributes:
       value: "Please read [our full contribution guide](https://laravel.com/docs/contributions#bug-reports) before submitting bug reports."
+  - type: checkboxes
+    attributes:
+      label: Inertia Adapter(s) Affected
+      description: Select all frontend adapters that are impacted by this issue.
+      options:
+        - label: React
+        - label: Vue
+        - label: Svelte
+        - label: Not Applicable
   - type: input
     attributes:
       label: "@inertiajs/... Version"
       description: Provide the version of `@inertiajs/...` you are using.
-      placeholder: "2.0.0"
+      placeholder: 2.0.0
     validations:
       required: true
   - type: textarea
     attributes:
       label: Backend Stack (optional)
       description: If this bug depends on backend integration, provide details such as Laravel version, PHP version, or other relevant environment info.
+      placeholder: |
+        Laravel 12.x
+        PHP 8.4
     validations:
       required: false
   - type: textarea
