@@ -15,9 +15,6 @@ body:
     attributes:
       label: Backend Stack (optional)
       description: If this bug depends on backend integration, provide details such as Laravel version, PHP version, or other relevant environment info.
-      placeholder: |
-        Laravel 12.x
-        PHP 8.4
       value: " "
     validations:
       required: false
